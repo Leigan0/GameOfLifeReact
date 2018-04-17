@@ -33,6 +33,7 @@ class Main extends React.Component {
     this.setState({
       gridFull: gridCopy
     })
+    this.playButton()
   }
 
   playButton = () => {
@@ -45,19 +46,38 @@ class Main extends React.Component {
   }
 
   slow = () => {
-    clearInterval(this.intervalId)
-    this.intervalId = setInterval(this.play, 500);
+    this.speed =  1000
+    this.playButton();
   }
 
   fast = () => {
-    clearInterval(this.intervalId)
-    this.intervalId = setInterval(this.play, 50);
+    this.speed = 50
+    this.playButton()
   }
 
   clear = () => {
     this.setState({
-      gridFull: Array(this.rows).fill().map(() => Array(this.cols).fill(false))
+      gridFull: Array(this.rows).fill().map(() => Array(this.cols).fill(false)),
+      generation: 0
     })
+    this.pauseButton()
+  }
+
+  gridSize = (size) => {
+    switch(size){
+      case "1":
+      this.cols = 20
+      this.rows = 10
+      break;
+      case "2":
+      this.cols = 50
+      this.rows = 30
+      break;
+      default:
+      this.cols = 70
+      this.rows = 50
+    }
+    this.clear();
   }
 
   play = () => {

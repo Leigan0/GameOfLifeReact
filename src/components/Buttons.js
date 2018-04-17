@@ -35,7 +35,7 @@ class Buttons extends React.Component {
           >
             <MenuItem eventKey="1">20x10</MenuItem>
             <MenuItem eventKey="2">50x30</MenuItem>
-            <MenuItem eventKey="1">70x50</MenuItem>
+            <MenuItem eventKey="3">70x50</MenuItem>
           </DropdownButton>
         </ButtonToolbar>
       </div>
