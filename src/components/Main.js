@@ -44,6 +44,22 @@ class Main extends React.Component {
     clearInterval(this.intervalId)
   }
 
+  slow = () => {
+    clearInterval(this.intervalId)
+    this.intervalId = setInterval(this.play, 500);
+  }
+
+  fast = () => {
+    clearInterval(this.intervalId)
+    this.intervalId = setInterval(this.play, 50);
+  }
+
+  clear = () => {
+    this.setState({
+      gridFull: Array(this.rows).fill().map(() => Array(this.cols).fill(false))
+    })
+  }
+
   play = () => {
     let g = this.state.gridFull
     let g2 = arrayClone(this.state.gridFull)
